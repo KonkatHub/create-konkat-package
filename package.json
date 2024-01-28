@@ -1,12 +1,35 @@
 {
   "name": "@konkat/create-konkat-package",
+  "license": "MIT",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A CLI tool to bootstrap new typescript packages.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "create-konkat-package": "./dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "scripts": {
+    "dev": "tsup index.ts --format cjs,esm --dts --silent && node dist/index.js",
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "lint": "tsc",
+    "release": "pnpm run build && changeset publish"
+  },
+  "keywords": [
+    "package",
+    "typescript",
+    "konkat",
+    "bootstrap",
+    "template",
+    "starterkit"
+  ],
+  "authors": [
+    "Konkat",
+    "Mathis Côté"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
 }
