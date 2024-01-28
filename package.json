@@ -1,7 +1,7 @@
 {
   "name": "@konkat/create-konkat-package",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A CLI tool to bootstrap new typescript packages.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
