@@ -1,4 +1,4 @@
-# @konkat/create-konkat-package
+# @konkat/create-ts-package
 
 ## 0.0.3
 
