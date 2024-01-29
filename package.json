@@ -3,6 +3,7 @@
   "license": "MIT",
   "version": "0.0.4",
   "description": "A CLI tool to bootstrap new typescript packages.",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -10,8 +11,8 @@
     "create-ts-package": "./dist/index.js"
   },
   "scripts": {
-    "dev": "tsup index.ts --format cjs,esm --dts --silent && node dist/index.js",
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "dev": "pnpm build && node dist/index.js",
+    "build": "tsup index.ts --format esm --dts",
     "lint": "tsc",
     "release": "pnpm run build && changeset publish"
   },
