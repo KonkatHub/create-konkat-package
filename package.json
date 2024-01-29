@@ -5,14 +5,13 @@
   "description": "A CLI tool to bootstrap new typescript packages.",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
     "create-ts-package": "./dist/index.js"
   },
   "scripts": {
-    "dev": "pnpm build && node dist/index.js",
-    "build": "tsup index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --dts --silent && node dist/index.js",
+    "build": "tsup src/index.ts --format esm --dts",
     "lint": "tsc",
     "release": "pnpm run build && changeset publish"
   },
