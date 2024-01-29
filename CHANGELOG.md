@@ -1,5 +1,11 @@
 # @konkat/create-ts-package
 
+## 0.0.4
+
+### Patch Changes
+
+- a24a0cd: change package name to @konkat/create-ts-package
+
 ## 0.0.3
 
 ### Patch Changes
