@@ -1,63 +1,5 @@
 import { input, select } from "@inquirer/prompts";
-import {
-  createPrompt,
-  useState,
-  useKeypress,
-  isEnterKey,
-  isBackspaceKey,
-} from "@inquirer/core";
-import chalk from "chalk";
-
-export const multiAnswer: any = createPrompt<
-  string[],
-  { message: string; default?: string[] }
->((config, done) => {
-  const [status, setStatus] = useState("pending");
-  const [values, setValues] = useState(config.default ?? ([] as string[]));
-  const [currentValue, setCurrentValue] = useState("");
-
-  useKeypress((key, rl) => {
-    setCurrentValue(rl.line.trim());
-
-    const updateValues = () => {
-      setValues([...values, currentValue]);
-      rl.clearLine(0);
-      setCurrentValue("");
-    };
-
-    if (key.name === "tab") {
-      updateValues();
-    }
-
-    if (isBackspaceKey(key)) {
-      if (currentValue === "") {
-        setValues(values.slice(0, values.length - 1));
-      }
-    }
-
-    if (isEnterKey(key)) {
-      if (currentValue === "") {
-        setStatus("done");
-        done(values);
-      } else {
-        updateValues();
-      }
-    }
-  });
-
-  const displayValues =
-    values.map((v) => chalk.bgGray(` ${v} `)).join(" ") + " | ";
-  let formattedValues = displayValues + currentValue;
-  let defaultValue = "";
-  if (status === "done") {
-    formattedValues = displayValues.slice(0, displayValues.length - 3);
-  } else {
-    defaultValue = chalk.dim("");
-  }
-
-  const message = chalk.bold(config.message);
-  return `${message}${defaultValue} ${formattedValues}`;
-});
+import { multiAnswer } from "./multi-answer";
 
 export async function askProjectName() {
   return await input({
@@ -115,5 +57,11 @@ export async function askProjectLicense() {
           "A copyleft license that allows proprietary software to link to your code.",
       },
     ],
+  });
+}
+
+export async function askProjectAuthors() {
+  return await multiAnswer({
+    message: "Who are the authors of your package?",
   });
 }
