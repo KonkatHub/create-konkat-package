@@ -1,5 +1,11 @@
 # @konkat/create-ts-package
 
+## 0.1.0
+
+### Minor Changes
+
+- ccafb73: Add project initialisation, customization and complete setup (dep install, git repo, github actions, more...)
+
 ## 0.0.4
 
 ### Patch Changes
