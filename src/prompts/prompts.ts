@@ -1,4 +1,4 @@
-import { input, select } from "@inquirer/prompts";
+import { input, select, confirm } from "@inquirer/prompts";
 import { multiAnswer } from "./multi-answer";
 
 export async function askProjectName() {
@@ -63,5 +63,23 @@ export async function askProjectLicense() {
 export async function askProjectAuthors() {
   return await multiAnswer({
     message: "Who are the authors of your package?",
+  });
+}
+
+export async function askProjectKeywords() {
+  return await multiAnswer({
+    message: "What are the keywords of your package?",
+  });
+}
+
+export async function askInitGitRepoConfirmation() {
+  return await confirm({
+    message: "Do you want to initialize a git repository?",
+  });
+}
+
+export async function askInstallDependenciesConfirmation() {
+  return await confirm({
+    message: "Do you want to install the dependencies?",
   });
 }
